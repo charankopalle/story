@@ -1,6 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import { FaInstagram, FaYoutube, FaWhatsapp, FaTwitter, FaGithub } from 'react-icons/fa';
+
+// AdSense Component
+const AdBanner = () => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508523131488747";
+    script.async = true;
+    script.crossOrigin = "anonymous";
+    document.body.appendChild(script);
+  }, []);
+
+  return (
+    <ins className="adsbygoogle"
+         style={{ display: 'block', textAlign: 'center', margin: '20px 0' }}
+         data-ad-client="ca-pub-2508523131488747"
+         data-ad-slot="1234567890"  // <-- Replace with your actual ad slot
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  );
+};
 
 const App = () => {
     const [prompt, setPrompt] = useState('');
@@ -112,10 +132,12 @@ const App = () => {
                             <p className="story-text">{story}</p>
                         </div>
                     )}
+
+                    {/* AdSense banner */}
+                    <AdBanner />
                 </div>
             </div>
             
-
             {/* Footer */}
             <footer className="app-footer">
                 <p>Connect with us:</p>
